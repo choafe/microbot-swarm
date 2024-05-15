@@ -21,6 +21,11 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+defaults:
+  run:
+    # Specifies where all site materials are located for the job
+    working-directory: ./docs
+
 jobs:
   # Build job
   build:
@@ -33,7 +38,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./docs
+          source: ./
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
